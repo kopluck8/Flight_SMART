@@ -1,0 +1,26 @@
+{
+  "name": "flight-smart",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sinkron log terbang DJI ke GitHub (GPX/KML/CSV) dan pengisian data foto drone ke format SMART Mobile.",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "process": "node scripts/process-logs.mjs",
+    "build": "node scripts/build-app.mjs",
+    "test": "node --test test/*.test.mjs"
+  },
+  "dependencies": {
+    "dji-log-parser-js": "0.5.7"
+  },
+  "devDependencies": {
+    "@xmldom/xmldom": "^0.8.10",
+    "esbuild": "0.24.2",
+    "exifr": "7.1.3",
+    "fflate": "^0.8.2",
+    "leaflet": "1.9.4"
+  },
+  "license": "MIT"
+}

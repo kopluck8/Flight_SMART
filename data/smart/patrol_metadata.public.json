@@ -1,0 +1,372 @@
+[
+ {
+  "SMART_PatrolTransport": {
+   "isRequired": true,
+   "label_default": "Patrol Transport Type",
+   "label_in": "Jenis Transportasi Patroli",
+   "options": [
+    {
+     "label_default": "Jalan Kaki",
+     "label_in": "Jalan Kaki",
+     "max_speed": 120,
+     "uuid": "86e73c3afb9946d5982a87e882fcf929",
+     "key": "jalankaki"
+    },
+    {
+     "label_default": "Roda 2",
+     "label_in": "Roda 2",
+     "max_speed": 120,
+     "uuid": "913411491a644a3b82e6e336c535fcea",
+     "key": "roda2"
+    },
+    {
+     "label_default": "Roda 4",
+     "label_in": "Roda 4",
+     "max_speed": 120,
+     "uuid": "bbc058cee232472ab2c4a9b224dbb6e5",
+     "key": "roda4"
+    },
+    {
+     "label_default": "Drone",
+     "label_in": "Drone",
+     "max_speed": 500,
+     "uuid": "558af845835046efa7a06e553a8e3637",
+     "key": "drone"
+    }
+   ],
+   "isVisible": true,
+   "type": "SINGLE_CHOICE",
+   "label_en": "Patrol Transport Type",
+   "isFixed": false
+  }
+ },
+ {
+  "SMART_Armed": {
+   "isRequired": true,
+   "label_default": "Is Armed",
+   "label_in": "Bersenjata",
+   "isVisible": true,
+   "type": "BOOLEAN",
+   "label_en": "Is Armed",
+   "isFixed": true
+  }
+ },
+ {
+  "SMART_Team": {
+   "isRequired": false,
+   "label_default": "Team",
+   "label_in": "Tim",
+   "options": [
+    {
+     "label_default": "Resor Doroncanga",
+     "label_in": "Resor Doroncanga",
+     "uuid": "53954b5438494399afb31dddb1c1b06f",
+     "key": "resordoroncanga"
+    },
+    {
+     "label_default": "Resor Doropeti",
+     "label_in": "Resor Doropeti",
+     "uuid": "121eed360f354f22b0ddba1e2a9f0420",
+     "key": "resordoropeti"
+    },
+    {
+     "label_default": "Resor Kawinda Toi",
+     "label_in": "Resor Kawinda Toi",
+     "uuid": "1e22df7b97b647d9b0fca5e9cd467d4b",
+     "key": "resorkawindatoi"
+    },
+    {
+     "label_default": "Resor Oi Katupa",
+     "label_in": "Resor Oi Katupa",
+     "uuid": "50775da5be1449259f2756ed58eb1578",
+     "key": "resoroikatupa"
+    },
+    {
+     "label_default": "Resor Pancasila",
+     "label_in": "Resor Pancasila",
+     "uuid": "3488cb425d6c418895521eec265377ec",
+     "key": "resorpancasila"
+    },
+    {
+     "label_default": "Resor Piong",
+     "label_in": "Resor Piong",
+     "uuid": "ed665d2690214d1299ab221bf70b36b7",
+     "key": "resorpiong"
+    },
+    {
+     "label_default": "TN Tambora",
+     "label_in": "TN Tambora",
+     "uuid": "6b9ae082384e4fdb814f74057593ea32",
+     "key": "tntambora"
+    }
+   ],
+   "isVisible": true,
+   "type": "SINGLE_CHOICE",
+   "label_en": "Team",
+   "isFixed": true
+  }
+ },
+ {
+  "SMART_Station": {
+   "isRequired": false,
+   "label_default": "Station",
+   "label_in": "Pos",
+   "options": [
+    {
+     "label_default": "Resor Piong",
+     "label_in": "Resor Piong",
+     "uuid": "28c6b5089e82461fb5d8b8797c8374d0"
+    },
+    {
+     "label_default": "Resor Oi Katupa",
+     "label_in": "Resor Oi Katupa",
+     "uuid": "b6a8ba5ea32544e1b33161c2b417f772"
+    },
+    {
+     "label_default": "Resor Kawinda Toi",
+     "label_in": "Resor Kawinda Toi",
+     "uuid": "d831626c32d24a6e82d0b0f7baf993db"
+    },
+    {
+     "label_default": "Resor Doro Ncanga",
+     "label_in": "Resor Doro Ncanga",
+     "uuid": "99da5853d2f242f38ab1855bac56a48b"
+    },
+    {
+     "label_default": "Resor Doropeti",
+     "label_in": "Resor Doropeti",
+     "uuid": "a7cc1f632c8d447f806c7b3347f531bd"
+    },
+    {
+     "label_default": "Resor Pancasila",
+     "label_in": "Resor Pancasila",
+     "uuid": "b0c15bf3d7d14e9ca2ec511d9cb8f1b3"
+    },
+    {
+     "label_default": "SPTN Wilayah I Kore",
+     "label_in": "SPTN Wilayah I Kore",
+     "uuid": "09788ffa3dc94a27a0a45229862d54c9"
+    },
+    {
+     "label_default": "SPTN Wilayah II Pekat",
+     "label_in": "SPTN Wilayah II Pekat",
+     "uuid": "3066b7c9ba8645e9a6649fb0bb8ab5df"
+    }
+   ],
+   "isVisible": true,
+   "type": "SINGLE_CHOICE",
+   "label_en": "Station",
+   "isFixed": true
+  }
+ },
+ {
+  "SMART_Mandate": {
+   "isRequired": true,
+   "label_default": "Mandate",
+   "label_in": "Mandat",
+   "options": [
+    {
+     "label_default": "Resort Base Management TN Tambora",
+     "label_in": "Resort Base Management TN Tambora",
+     "uuid": "6d62ba6af9384a968a60c609bb543778",
+     "key": "resortbasemanagementtntambora"
+    },
+    {
+     "label_default": "SMART Patrol Identifikasi Gangguan Karhutla dan Potensi Kawasan",
+     "label_in": "SMART Patrol Identifikasi Gangguan Karhutla dan Potensi Kawasan",
+     "uuid": "5e950632e4a840fc80515bb2416d2491",
+     "key": "smartpa"
+    },
+    {
+     "label_default": "SMART Patrol Bersama MMP/MPA/Pokma/Masyarakat",
+     "label_in": "SMART Patrol Bersama MMP/MPA/Pokma/Masyarakat",
+     "uuid": "22fd9f418bb34288a53d7b7a83e9483d",
+     "key": "smartpatrolbersamammpmpapokmamasyarakat"
+    },
+    {
+     "label_default": "SMART Patrol Bersama TNI/POLRI",
+     "label_in": "SMART Patrol Bersama TNI/POLRI",
+     "uuid": "f09f29aa79114c0591a563c13d1d7a9f",
+     "key": "smartpatrolbersamatnipolri"
+    },
+    {
+     "label_default": "SMART Patrol Pengendalian Karhut",
+     "label_in": "SMART Patrol Pengendalian Karhut",
+     "uuid": "1d41c3b3805a49208bf8d3d2f6787665",
+     "key": "smartpatrolpengendaliankarhut"
+    },
+    {
+     "label_default": "SMART Patrol Rawan TIPIHUT",
+     "label_in": "SMART Patrol Rawan TIPIHUT",
+     "uuid": "afad3ed43cf042a6a59ce5976310cd4f",
+     "key": "smartpatrolrawantipihut"
+    },
+    {
+     "label_default": "SMART Patrol Temuan Gangguan dan Potensi Kawasan",
+     "label_in": "SMART Patrol Temuan Gangguan dan Potensi Kawasan",
+     "uuid": "614826fff80d42b5a0750ac4056ac29e",
+     "key": "smartpatroltemuangangguandanpotensikawasan"
+    }
+   ],
+   "isVisible": true,
+   "type": "SINGLE_CHOICE",
+   "label_en": "Mandate",
+   "isFixed": false
+  }
+ },
+ {
+  "SMART_Objective": {
+   "isRequired": false,
+   "label_default": "Objective",
+   "label_in": "Tujuan",
+   "isVisible": true,
+   "type": "TEXT",
+   "label_en": "Objective",
+   "isFixed": true
+  }
+ },
+ {
+  "SMART_Comments": {
+   "isRequired": false,
+   "label_default": "Comment",
+   "label_in": "Komentar",
+   "isVisible": true,
+   "type": "TEXT",
+   "label_en": "Comment",
+   "isFixed": true
+  }
+ },
+ {
+  "SMART_Employees": {
+   "isRequired": true,
+   "label_default": "Employees",
+   "label_in": "Petugas ",
+   "options": [],
+   "groups": [
+    {
+     "label_default": "TN Tambora",
+     "label_in": "TN Tambora",
+     "options": []
+    },
+    {
+     "label_default": "TNI/POLRI",
+     "label_in": "TNI/POLRI",
+     "options": []
+    }
+   ],
+   "isVisible": true,
+   "type": "MULTI_CHOICE",
+   "label_en": "Employees",
+   "isFixed": false
+  }
+ },
+ {
+  "SMART_Leader": {
+   "parent": "SMART_Employees",
+   "isRequired": true,
+   "label_default": "Leader",
+   "label_in": "Ketua",
+   "isVisible": true,
+   "type": "SINGLE_CHOICE",
+   "label_en": "Leader",
+   "isFixed": false
+  }
+ },
+ {
+  "SMART_Pilot": {
+   "parent": "SMART_Employees",
+   "isRequired": false,
+   "required_by": {
+    "SMART_PatrolTransport": [
+     "558af845835046efa7a06e553a8e3637"
+    ]
+   },
+   "label_default": "Pilot",
+   "isVisible": true,
+   "type": "SINGLE_CHOICE",
+   "label_en": "Pilot",
+   "isFixed": false
+  }
+ },
+ {
+  "SMART_DataType": {
+   "isRequired": true,
+   "default": "patrol",
+   "generated": false,
+   "label_default": "Data Type",
+   "isVisible": false,
+   "type": "TEXT"
+  }
+ },
+ {
+  "SMART_PatrolID": {
+   "isRequired": true,
+   "generated": true,
+   "label_default": "Identifier",
+   "isVisible": false,
+   "type": "UUID"
+  }
+ },
+ {
+  "SMART_PatrolStartDate": {
+   "isRequired": true,
+   "generated": true,
+   "label_default": "Patrol Start Date",
+   "isVisible": false,
+   "type": "DATE"
+  }
+ },
+ {
+  "SMART_PatrolStartTime": {
+   "isRequired": true,
+   "generated": true,
+   "label_default": "Patrol Start Time",
+   "isVisible": false,
+   "type": "TIME"
+  }
+ },
+ {
+  "SMART_cmUuid": {
+   "isRequired": true,
+   "default": "e3b5c542edb44c179bf7e3626994aa7b",
+   "generated": false,
+   "label_default": "Identifier",
+   "isVisible": false,
+   "type": "UUID"
+  }
+ },
+ {
+  "SMART_053e32927149421e9eec6034ca70eb98": {
+   "isRequired": false,
+   "label_default": "Sumber Anggaran",
+   "label_in": "Sumber Anggaran",
+   "options": [
+    {
+     "label_default": "DIPA TNT",
+     "label_in": "DIPA TNT",
+     "uuid": "91d5501147474564b7a52886ccdabe4f",
+     "key": "dipatnt"
+    },
+    {
+     "label_default": "Mandiri",
+     "label_in": "Mandiri",
+     "uuid": "33a4cdb4a4924a3099e960e1836c3cd8",
+     "key": "mandiri"
+    }
+   ],
+   "isVisible": true,
+   "type": "SINGLE_CHOICE",
+   "isFixed": false
+  }
+ },
+ {
+  "SMART_46c472091b17430ea75170be0b52423f": {
+   "isRequired": false,
+   "label_default": "Nomor SPT",
+   "label_in": "Nomor SPT",
+   "isVisible": true,
+   "type": "TEXT",
+   "isFixed": false
+  }
+ }
+]

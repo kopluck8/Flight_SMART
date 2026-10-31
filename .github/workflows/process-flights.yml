@@ -1,0 +1,56 @@
+name: Proses log penerbangan
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "logs/**"
+      - "scripts/**"
+      - "flight-smart.config.json"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Proses ulang semua log"
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+
+concurrency:
+  group: process-flights
+  cancel-in-progress: false
+
+jobs:
+  process:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci --omit=dev
+
+      - name: Proses log DJI
+        env:
+          DJI_API_KEY: ${{ secrets.DJI_API_KEY }}
+        run: node scripts/process-logs.mjs ${{ inputs.force && '--force' || '' }}
+
+      - name: Simpan hasil ke repo
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A flights FLIGHTS.md
+          if git diff --cached --quiet; then
+            echo "Tidak ada perubahan."
+            exit 0
+          fi
+          git commit -m "Perbarui data penerbangan"
+          for i in 1 2 3; do
+            git pull --rebase origin main && git push origin HEAD:main && exit 0
+            sleep 5
+          done
+          exit 1
