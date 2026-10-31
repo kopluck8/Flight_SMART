@@ -37,8 +37,8 @@ Jam memakai WITA (UTC+08:00). Ubah di [`flight-smart.config.json`](flight-smart.
    [fine-grained token](https://github.com/settings/personal-access-tokens/new) dengan *Repository access* hanya
    `Flight_SMART`, izin **Contents: Read and write** dan **Actions: Read-only**. Tempel di tab **Pengaturan**.
    Token hanya disimpan di peramban perangkat itu.
-3. **Daftar petugas SMART.** Di tab **Foto → SMART**, tekan **Muat daftar petugas** dan pilih paket SMART Mobile
-   (`.zip`) atau `patrol_metadata.json`. Nama petugas sengaja tidak disimpan di repo.
+3. **Daftar petugas SMART** sudah tertanam di aplikasi dari [`data/smart/patrol_metadata.json`](data/smart/).
+   Bila daftar petugas berubah, ganti file itu dengan `patrol_metadata.json` terbaru dari paket SMART Mobile.
 
 ## Sinkron log
 
@@ -72,9 +72,10 @@ juga bisa dimuat langsung di tab **Pengaturan**, tetapi hanya berlaku di perangk
 
 ## Privasi
 
-Selama repo ini public, siapa pun bisa melihat log, jalur terbang, dan model SMART di dalamnya. Jadikan repo private
-bila jalur patroli tidak boleh terbuka. Aplikasi tetap berjalan dengan token, tetapi GitHub Pages gratis tidak bisa
-untuk repo private, jadi buka `index.html` langsung dari komputer.
+Selama repo ini public, siapa pun bisa melihat log, jalur terbang, model SMART, dan daftar nama petugas di
+dalamnya. Jadikan repo private untuk membatasinya; data yang sempat public tetap bisa sudah tersalin pihak lain.
+Aplikasi tetap berjalan dengan token, tetapi GitHub Pages gratis tidak bisa untuk repo private, jadi buka
+`index.html` langsung dari komputer.
 
 ## Pengembangan
 
@@ -89,7 +90,7 @@ npm run process   # proses logs/ secara lokal (DJI_API_KEY=... untuk log v13+)
 |---|---|
 | `app/` | Kode aplikasi web (dirakit menjadi `index.html`) |
 | `scripts/` | Pemroses log DJI dan perakit aplikasi |
-| `data/smart/` | Configurable Model dan metadata patroli SMART (tanpa nama petugas) |
+| `data/smart/` | Configurable Model dan metadata patroli SMART (termasuk daftar petugas) |
 | `logs/` | Log asli DJI |
 | `flights/` | Hasil olahan per penerbangan dan `index.json` |
 

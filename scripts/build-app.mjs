@@ -5,7 +5,7 @@
 //
 //   node scripts/build-app.mjs
 
-import { readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { build } from "esbuild";
 import { DOMParser } from "@xmldom/xmldom";
@@ -24,10 +24,12 @@ const js = await bundle("app/main.js", { format: "iife", target: ["es2020"], pla
 const css = await bundle("app/style.css", { loader: { ".png": "dataurl", ".svg": "dataurl" } });
 
 const model = parseConfigurableModel(read("data/smart/cm_model.xml"), new DOMParser());
+// Metadata lengkap (dengan nama petugas) hanya ditaruh di repo private; tanpa itu dipakai versi publik.
+const metadataFile = existsSync(path("data/smart/patrol_metadata.json")) ? "data/smart/patrol_metadata.json" : "data/smart/patrol_metadata.public.json";
 const data = {
   smart: {
     model,
-    metadata: JSON.parse(read("data/smart/patrol_metadata.public.json")),
+    metadata: JSON.parse(read(metadataFile)),
     project: JSON.parse(read("data/smart/project.json")),
   },
 };
@@ -45,4 +47,4 @@ const html = read("app/index.html")
 
 writeFileSync(path("index.html"), html);
 const kb = (s) => `${(Buffer.byteLength(s) / 1024).toFixed(0)} KB`;
-console.log(`index.html ${kb(html)} (JS ${kb(js)}, CSS ${kb(css)}, model SMART ${kb(json)}: ${model.name})`);
+console.log(`index.html ${kb(html)} (JS ${kb(js)}, CSS ${kb(css)}, model SMART ${kb(json)}: ${model.name}, metadata ${metadataFile})`);
