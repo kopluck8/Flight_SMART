@@ -145,7 +145,8 @@ export async function processAll({ root, force = false, apiKey = process.env.DJI
       stats.processed++;
       log(`OK     ${rel} -> flights/${id} (v${parser.version}, ${track.length} titik, ${photos.length} foto)`);
     } catch (e) {
-      const message = String(e?.message ?? e).split("\n")[0];
+      const raw = String(e?.message ?? e).split("\n")[0];
+      const message = /parse error|bad magic|no variants/i.test(raw) ? `Bukan file log DJI yang valid atau file rusak (${raw.replace(/:$/, "")})` : raw;
       flights.push({ id: null, status: "error", log: rel, sha256, error: message });
       stats.failed++;
       log(`GAGAL  ${rel}: ${message}`);
