@@ -4,7 +4,8 @@ import { mkdtempSync, mkdirSync, writeFileSync, readFileSync, existsSync, rmSync
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { processAll } from "../scripts/process-logs.mjs";
-import { fakeParserFactory } from "./helpers.mjs";
+import { fakeFrames, fakeParserFactory } from "./helpers.mjs";
+import { extractTrack } from "../scripts/lib/track.mjs";
 
 function setup() {
   const root = mkdtempSync(join(tmpdir(), "fsmart-"));
@@ -76,4 +77,12 @@ test("log versi 13+ butuh DJI_API_KEY, lalu berhasil setelah key ada", async () 
   assert.equal(r.index.flights[0].status, "ok");
   assert.equal(r.index.flights[0].version, 14);
   rmSync(root, { recursive: true, force: true });
+});
+
+test("ketinggian MSL 0 di awal track (home belum tercatat) diisi dari ketinggian home", () => {
+  const frames = fakeFrames({ seconds: 5 });
+  for (let i = 5; i < 10; i++) frames[i].osd.altitude = 0;
+  const pts = extractTrack(frames, { intervalSec: 1 });
+  assert.equal(pts[0].alt, 241);
+  assert.ok(pts.every((p) => p.alt > 0));
 });

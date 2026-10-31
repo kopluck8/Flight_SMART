@@ -50,18 +50,28 @@ export const ctx = {
   repo() {
     return new GitHubRepo({ owner: settings.owner, repo: settings.repo, branch: settings.branch, token: settings.token });
   },
-  /** Baca file dari repo. Dengan token lewat API (selalu terbaru, bisa repo private);
-   *  tanpa token dari raw.githubusercontent.com (repo public, tanpa batas 60 permintaan/jam). */
-  async fetchFile(path, as = "json") {
-    let buf;
-    if (!settings.token) {
+  /** Baca file dari repo. Dengan token selalu lewat API (terbaru, bisa repo private). Tanpa token,
+   *  file yang sering berubah (`fresh`, mis. indeks) lewat API agar tidak tertahan cache CDN
+   *  raw.githubusercontent.com (±5 menit); file lain lewat raw yang tidak dibatasi 60 permintaan/jam. */
+  async fetchFile(path, as = "json", { fresh = false } = {}) {
+    const raw = async () => {
+      const url = `https://raw.githubusercontent.com/${settings.owner}/${settings.repo}/${encodeURIComponent(settings.branch)}/${path.split("/").map(encodeURIComponent).join("/")}`;
+      const r = await fetch(url, { cache: "no-cache" });
+      if (!r.ok) throw Object.assign(new Error(`GitHub: ${r.status}`), { status: r.status });
+      return r.arrayBuffer();
+    };
+    const api = () => this.repo().readFile(path);
+    const order = settings.token ? [api] : fresh ? [api, raw] : [raw, api];
+    let buf, err;
+    for (const get of order) {
       try {
-        const url = `https://raw.githubusercontent.com/${settings.owner}/${settings.repo}/${encodeURIComponent(settings.branch)}/${path.split("/").map(encodeURIComponent).join("/")}`;
-        const r = await fetch(url, { cache: "no-cache" });
-        if (r.ok) buf = await r.arrayBuffer();
-      } catch {}
+        buf = await get();
+        break;
+      } catch (e) {
+        if (!err || get === api) err = e; // pesan dari API lebih jelas
+      }
     }
-    buf ??= await this.repo().readFile(path);
+    if (!buf) throw err;
     if (as === "blob") return new Blob([buf]);
     const text = new TextDecoder().decode(buf);
     return as === "json" ? JSON.parse(text) : text;
@@ -69,7 +79,7 @@ export const ctx = {
   async loadIndex(force = false) {
     if (this.index && !force) return this.index;
     try {
-      this.index = await this.fetchFile("flights/index.json");
+      this.index = await this.fetchFile("flights/index.json", "json", { fresh: true });
       this.indexError = null;
     } catch (e) {
       this.index = { flights: [] };

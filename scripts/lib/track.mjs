@@ -46,6 +46,12 @@ export function extractTrack(frames, { intervalSec = 1 } = {}) {
     };
     pts.push(last);
   }
+  // Frame awal sebelum titik home tercatat berketinggian MSL 0; isi dari ketinggian home.
+  const ref = pts.find((p) => p.alt);
+  if (ref) for (const p of pts) {
+    if (p.alt) break;
+    p.alt = ref.alt - ref.height + p.height;
+  }
   return pts;
 }
 
