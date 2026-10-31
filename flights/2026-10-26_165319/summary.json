@@ -1,0 +1,42 @@
+{
+  "id": "2026-10-26_165319",
+  "status": "ok",
+  "log": "logs/DJIFlightRecord_2026-10-26_[16-53-19].txt",
+  "sha256": "1162b55551982d40f73b05635dc5e7584bb0e5d5883cbbe0f4d52c8542f9673f",
+  "version": 8,
+  "aircraft": "Multimedia TN Tambora-Mavic2",
+  "product": "Mavic2",
+  "aircraftSn": "1633GBN0HSY009",
+  "app": "IOS 4.3.68",
+  "location": "Kota Bima, West Nusa Tenggara",
+  "start": "2026-10-26T08:53:19.579Z",
+  "startLocal": "2026-10-26T16:53:19",
+  "end": "2026-10-26T09:02:56.602Z",
+  "durationSec": 577,
+  "distanceM": 2571,
+  "maxHeightM": 96.6,
+  "maxAltitudeM": 293,
+  "maxSpeedMs": 14.2,
+  "maxDistanceFromHomeM": 1006,
+  "photos": 6,
+  "videoSec": 37,
+  "points": 554,
+  "home": {
+    "lat": -8.28630485674565,
+    "lon": 118.17415965155712,
+    "alt": 196.4
+  },
+  "bbox": [
+    118.165563,
+    -8.28996,
+    118.174816,
+    -8.28623
+  ],
+  "files": {
+    "gpx": "flights/2026-10-26_165319/track.gpx",
+    "kml": "flights/2026-10-26_165319/track.kml",
+    "geojson": "flights/2026-10-26_165319/track.geojson",
+    "csv": "flights/2026-10-26_165319/frames.csv",
+    "track": "flights/2026-10-26_165319/track.json"
+  }
+}
